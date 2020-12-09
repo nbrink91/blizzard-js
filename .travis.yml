@@ -4,10 +4,20 @@ node_js:
 cache:
   directories:
     - "node_modules"
+
+addons:
+  sonarcloud:
+    organization: "nbrink91"
+    token:
+      secure: $SONARCLOUD_ENCRYPTED_TOKEN
+
 install:
   - npm i -g yarn
   - yarn install
-  - yarn test
+
+script:
+  - sonar-scanner
+
 deploy:
   provider: npm
   email: nbrink7@gmail.com
