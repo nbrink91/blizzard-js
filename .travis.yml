@@ -1,0 +1,28 @@
+arch: amd64
+os: linux
+dist: xenial
+language: node_js
+
+node_js:
+  - 15
+
+cache:
+  directories:
+    - "node_modules"
+
+addons:
+  sonarcloud:
+    organization: "nbrink91"
+    token:
+      secure: VdSZ2eRJUvt27mpDUjPs0NUwIXifT3JWkH/Kkcaev9M22iwUWio8sfjvbv8AmI60cWHl5ulJ0u++UOxCYrLLlE+AfzduBTRDnq6d06zmX19yBiaUPq20AcmMaL4c3BRHbgY7JqsXh5ydJoqLYEAbNiH3PVwuqHCSMOxGQnr+3papGIsYwGYgiM4RqcGmd+F19/c/UlatAjoO5Tb7xnfZzvMSUomdLTePXg9IHH326Jby30SuLbIbqPFVb+/CHBJxNgitp4XJaZMBEY9rP2HcawtUnoXfxn9dSBGCfOmj3v1Jn0CxtQtHcXpoFZ6fQnfEZzrdWIIbNSDsaVgDNvxg5rqhSHmkGNyI9AGM1K7dkBn/Pp+c3JxEXqxl1afq9KypVZ5HYp2+50FD7ibud+dzvRsPxS9/Z/e45TUD3PSVDw9nCwwCJ/MXQP7+s1cwPtsGtSWt0uz8vnRiRl9IPkBUzDcXtdL2++basxbx4sM5+oUsBFLFhLtW3zR3jRZvreK2+lU7ejPFnyrbAehPIF8AmqbA5AOx5wEO3PTotXM2ui/huDg5fjV8ExeaSJ541LjUEMBmn6FqNFuXpXRT1lQhjGLVzvpmoewIWCG74Q85eyK1uODzHCdv1v6DuZg3SM0uaqo6tUgl/UJCOgnxcro8A6ku8y4myFSOo1rDwULeyTE=
+
+script:
+  - sonar-scanner
+
+deploy:
+  provider: npm
+  email: nbrink7@gmail.com
+  api_token: $NPM_TOKEN
+  on:
+    tags: true
+    branch: master
